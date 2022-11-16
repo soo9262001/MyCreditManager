@@ -34,7 +34,7 @@ class MyCreditManager {
     func addStudent() {
         print(Message.addStudentMessage)
         let input = readLine();
-        if let studentName = input?.trimmingCharacters(in: .whitespaces).uppercased() {
+        if let studentName = input?.trimmingCharacters(in: .whitespaces) {
             if studentName.isEmpty {
                 print(Message.inputErrorMessage)
             } else {
@@ -59,8 +59,7 @@ class MyCreditManager {
             } else {
                 if studentNameList.contains(studentName) {
                     print("\(studentName) 학생을 삭제하였습니다.")
-                    // 포스 언래핑
-                    studentNameList.remove(at: studentNameList.firstIndex(of: studentName)!)
+                    studentNameList.removeAll(where: { $0 == studentName })
                 } else {
                     print("\(studentName) 학생을 찾지 못했습니다.")
                 }
