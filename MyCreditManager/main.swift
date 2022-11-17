@@ -32,14 +32,12 @@ while true {
             let input = readLine();
             if let studentGrade = input?.trimmingCharacters(in: .whitespaces).components(separatedBy: " ") {
                 studentGrade.count > 2 ? myCreditManager.addGrades(name: studentGrade[0], subject: studentGrade[1], grade: studentGrade[2]) : print(Message.inputErrorMessage)
-                    
                 }
         case "4":
             print(Message.deleteGradesMessage)
             let input = readLine();
             if let studentGrade = input?.trimmingCharacters(in: .whitespaces).components(separatedBy: " ") {
                 studentGrade.count > 1 ? myCreditManager.deleteGrades(name: studentGrade[0], subject: studentGrade[1]) : print(Message.inputErrorMessage)
-                    
                 }
         case "5":
             print(Message.showAverageMessage)

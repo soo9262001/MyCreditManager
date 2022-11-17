@@ -35,7 +35,7 @@ class MyCreditManager {
     
     /// 이름, 과목, 성적 추가
     func addGrades(name: String, subject: String, grade: String) {
-        let info = Student(name: name, subject: subject, score: grade.uppercased())
+        let info = Student(name: name, subject: subject, grade: grade.uppercased())
         studentGradeList.removeAll { $0.name == name && $0.subject == subject }
         studentGradeList.append(info)
         print("\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다.")
@@ -52,6 +52,7 @@ class MyCreditManager {
         }
     }
     
+    /// 성적 평균 보기
     func showAverage(name: String) {
         if studentGradeList.contains(where: { $0.name == name }) {
             let data = studentGradeList.filter { $0.name == name }
@@ -65,7 +66,6 @@ class MyCreditManager {
         } else {
             print("\(name) 학생을 찾지 못했습니다.")
         }
-
     }
 
     /// 종료

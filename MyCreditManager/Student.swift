@@ -29,9 +29,9 @@ struct Student {
         }
     }
     
-    init(name: String, subject: String, score: String) {
+    init(name: String, subject: String, grade: String) {
         self.name = name
         self.subject = subject
-        self.grade = score
+        self.grade = grade
     }
 }

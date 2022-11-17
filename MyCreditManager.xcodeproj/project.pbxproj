@@ -11,6 +11,7 @@
 		EB9A7E632924B95000B6201F /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E622924B95000B6201F /* Student.swift */; };
 		EB9A7E652924BBF500B6201F /* MyCreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E642924BBF500B6201F /* MyCreditManager.swift */; };
 		EB9A7E672924BCF000B6201F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E662924BCF000B6201F /* Message.swift */; };
+		EB9A7E6F2925CF7300B6201F /* MyCreditManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E6E2925CF7300B6201F /* MyCreditManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,10 +32,19 @@
 		EB9A7E622924B95000B6201F /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		EB9A7E642924BBF500B6201F /* MyCreditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCreditManager.swift; sourceTree = "<group>"; };
 		EB9A7E662924BCF000B6201F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		EB9A7E6C2925CF7300B6201F /* MyCreditManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCreditManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB9A7E6E2925CF7300B6201F /* MyCreditManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCreditManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EB9A7E552923676300B6201F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9A7E692925CF7300B6201F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -48,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				EB9A7E5A2923676300B6201F /* MyCreditManager */,
+				EB9A7E6D2925CF7300B6201F /* MyCreditManagerTests */,
 				EB9A7E592923676300B6201F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				EB9A7E582923676300B6201F /* MyCreditManager */,
+				EB9A7E6C2925CF7300B6201F /* MyCreditManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +81,14 @@
 				EB9A7E662924BCF000B6201F /* Message.swift */,
 			);
 			path = MyCreditManager;
+			sourceTree = "<group>";
+		};
+		EB9A7E6D2925CF7300B6201F /* MyCreditManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				EB9A7E6E2925CF7300B6201F /* MyCreditManagerTests.swift */,
+			);
+			path = MyCreditManagerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +111,23 @@
 			productReference = EB9A7E582923676300B6201F /* MyCreditManager */;
 			productType = "com.apple.product-type.tool";
 		};
+		EB9A7E6B2925CF7300B6201F /* MyCreditManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB9A7E702925CF7300B6201F /* Build configuration list for PBXNativeTarget "MyCreditManagerTests" */;
+			buildPhases = (
+				EB9A7E682925CF7300B6201F /* Sources */,
+				EB9A7E692925CF7300B6201F /* Frameworks */,
+				EB9A7E6A2925CF7300B6201F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyCreditManagerTests;
+			productName = MyCreditManagerTests;
+			productReference = EB9A7E6C2925CF7300B6201F /* MyCreditManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -102,6 +139,9 @@
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					EB9A7E572923676300B6201F = {
+						CreatedOnToolsVersion = 14.0;
+					};
+					EB9A7E6B2925CF7300B6201F = {
 						CreatedOnToolsVersion = 14.0;
 					};
 				};
@@ -120,9 +160,20 @@
 			projectRoot = "";
 			targets = (
 				EB9A7E572923676300B6201F /* MyCreditManager */,
+				EB9A7E6B2925CF7300B6201F /* MyCreditManagerTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB9A7E6A2925CF7300B6201F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EB9A7E542923676300B6201F /* Sources */ = {
@@ -133,6 +184,14 @@
 				EB9A7E672924BCF000B6201F /* Message.swift in Sources */,
 				EB9A7E5C2923676300B6201F /* main.swift in Sources */,
 				EB9A7E632924B95000B6201F /* Student.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB9A7E682925CF7300B6201F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB9A7E6F2925CF7300B6201F /* MyCreditManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +329,44 @@
 			};
 			name = Release;
 		};
+		EB9A7E712925CF7300B6201F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soo.MyCreditManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EB9A7E722925CF7300B6201F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.soo.MyCreditManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -287,6 +384,15 @@
 			buildConfigurations = (
 				EB9A7E602923676300B6201F /* Debug */,
 				EB9A7E612923676300B6201F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB9A7E702925CF7300B6201F /* Build configuration list for PBXNativeTarget "MyCreditManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB9A7E712925CF7300B6201F /* Debug */,
+				EB9A7E722925CF7300B6201F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
