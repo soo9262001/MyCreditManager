@@ -12,119 +12,60 @@ class MyCreditManager {
     var studentNameList: [String] = []
     /// 학생 성적 리스트
     var studentGradeList: [Student] = []
-    
-    /// 메뉴 고르기
-    func selectMenu() {
-        print(Message.selectMessage)
-        let input = readLine();
-        if let input = input {
-            switch input {
-            case "1": addStudent()
-            case "2": deleteStudent()
-            case "3": addGrades()
-            case "4": deleteGrades()
-            case "5": showAverage()
-            case "X": exit()
-            default: wrongInput()
-            }
-        }
-    }
-
-    /// 학생 명단 추가
-    func addStudent() {
-        print(Message.addStudentMessage)
-        let input = readLine();
-        if let studentName = input?.trimmingCharacters(in: .whitespaces) {
-            if studentName.isEmpty {
-                print(Message.inputErrorMessage)
-            } else {
-                if studentNameList.contains(studentName) {
-                    print("\(studentName)은 이미 존재하는 학생입니다. 추가하지 않습니다")
-                } else {
-                    print("\(studentName) 학생을 추가했습니다.")
-                    studentNameList.append(studentName)
-                }
-            }
-            selectMenu()
-        }
-    }
-
-    /// 학생 명단 삭제
-    func deleteStudent() {
-        print(Message.deleteStudentMessage)
-        let input = readLine();
-        if let studentName = input?.trimmingCharacters(in: .whitespaces) {
-            if studentName.isEmpty {
-                print(Message.inputErrorMessage)
-            } else {
-                if studentNameList.contains(studentName) {
-                    print("\(studentName) 학생을 삭제하였습니다.")
-                    studentNameList.removeAll(where: { $0 == studentName })
-                } else {
-                    print("\(studentName) 학생을 찾지 못했습니다.")
-                }
-            }
-            selectMenu()
-        }
-    }
-
-    /// 학생 성적 추가
-    func addGrades() {
-        print(Message.addGradesMessage)
-        let input = readLine();
-        if let studentGrade = input?.trimmingCharacters(in: .whitespaces).components(separatedBy: " ") {
-            if studentGrade.count > 2 {
-                print("\(studentGrade[0]) 학생의 \(studentGrade[1]) 과목이 \(studentGrade[2])로 추가(변경)되었습니다.")
-                let info = Student(name: studentGrade[0], subject: studentGrade[1], score: studentGrade[2].uppercased())
-                studentGradeList.removeAll { $0.name == studentGrade[0] && $0.subject == studentGrade[1] }
-                studentGradeList.append(info)
-            } else {
-                print(Message.inputErrorMessage)
-            }
-            selectMenu()
-        }
-    }
-
-    /// 학생 성적 삭제
-    func deleteGrades() {
-        print(Message.deleteStudentMessage)
-        let input = readLine();
-        if let studentGrade = input?.trimmingCharacters(in: .whitespaces).components(separatedBy: " ") {
-            if studentGrade.count > 1 {
-                if studentGradeList.contains(where: { $0.name == studentGrade[0] && $0.subject == studentGrade[1] }) {
-                    print("\(studentGrade[0]) 학생의 \(studentGrade[1]) 과목의 성적이 삭제되었습니다.")
-                    studentGradeList.removeAll { $0.name == studentGrade[0] && $0.subject == studentGrade[1] }
-                } else {
-                    print("\(studentGrade[0]) 학생을 찾지 못했습니다.")
-                }
-            } else {
-                print(Message.inputErrorMessage)
-            }
-            selectMenu()
-        }
-    }
-
-    /// 학생 성적 평균 보기
-    func showAverage() {
-        print(Message.showAverageMessage)
-        let input = readLine();
-        if let studentName = input?.trimmingCharacters(in: .whitespaces), !studentName.isEmpty {
-            if studentGradeList.contains(where: { $0.name == studentName }) {
-                let data = studentGradeList.filter { $0.name == studentName }
-                var average: Double = 0
-                for i in data {
-                    print("\(i.subject): \(i.doubleGrade)")
-                    average += i.doubleGrade
-                }
-                average = round(average / Double(data.count) * 100) / 100
-                print("평점: \(average)")
-            } else {
-                print("\(studentName) 학생을 찾지 못했습니다.")
-            }
+ 
+    /// 학생명단 추가
+    func addStudent(name: String) {
+        if studentNameList.contains(name) {
+            print("\(name)은 이미 존재하는 학생입니다. 추가하지 않습니다")
         } else {
-            print(Message.inputErrorMessage)
+            print("\(name) 학생을 추가했습니다.")
+            studentNameList.append(name)
         }
-        selectMenu()
+    }
+
+    /// 학생명단 삭제
+    func deleteStudent(name: String) {
+        if studentNameList.contains(name) {
+            print("\(name) 학생을 삭제하였습니다.")
+            studentNameList.removeAll(where: { $0 == name })
+        } else {
+            print("\(name) 학생을 찾지 못했습니다.")
+        }
+    }
+    
+    /// 이름, 과목, 성적 추가
+    func addGrades(name: String, subject: String, grade: String) {
+        let info = Student(name: name, subject: subject, score: grade.uppercased())
+        studentGradeList.removeAll { $0.name == name && $0.subject == subject }
+        studentGradeList.append(info)
+        print("\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다.")
+
+    }
+    
+    /// 이름, 과목, 성적 삭제
+    func deleteGrades(name: String, subject: String) {
+        if studentGradeList.contains(where: { $0.name == name && $0.subject == subject }) {
+            print("\(name) 학생의 \(subject) 과목의 성적이 삭제되었습니다.")
+            studentGradeList.removeAll { $0.name == name && $0.subject == subject }
+        } else {
+            print("\(name) 학생을 찾지 못했습니다.")
+        }
+    }
+    
+    func showAverage(name: String) {
+        if studentGradeList.contains(where: { $0.name == name }) {
+            let data = studentGradeList.filter { $0.name == name }
+            var average: Double = 0
+            for i in data {
+                print("\(i.subject): \(i.doubleGrade)")
+                average += i.doubleGrade
+            }
+            average = round(average / Double(data.count) * 100) / 100
+            print("평점: \(average)")
+        } else {
+            print("\(name) 학생을 찾지 못했습니다.")
+        }
+
     }
 
     /// 종료
@@ -136,6 +77,5 @@ class MyCreditManager {
     /// 입력오류
     func wrongInput() {
         print(Message.selectErrorMessage)
-        selectMenu()
     }
 }
