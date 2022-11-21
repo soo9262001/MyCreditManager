@@ -6,8 +6,11 @@
 //
 
 import XCTest
+import MyCreditManager
 
 final class MyCreditManagerTests: XCTestCase {
+    
+    let myCreditManager = MyCreditManager()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -31,5 +34,30 @@ final class MyCreditManagerTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testAddStudent() {
+        let isSuccess = myCreditManager.addStudent(name: "ABC") == .success(Student(name: "ABC")) ? true : false
+        XCTAssertTrue(isSuccess)
+    }
+    
+    func testDeleteStudet() {
+        let isSuccess = myCreditManager.deleteStudent(name: "ABC") != .success(Student(name: "ABC")) ? true : false
+        XCTAssertTrue(isSuccess)
+    }
+    
+    func testAddGrade() {
+        let isSuccess = myCreditManager.addGrades(name: "ABC", subject: "DE", grade: "A") == .success(Student(name: "ABC", subject: "DE", grade: "A")) ? true : false
+        XCTAssertTrue(isSuccess)
+    }
+    
+    func testDeleteGrade() {
+        let isSuccess = myCreditManager.deleteGrades(name: "ABC", subject: "DE") != .success(Student(name: "ABC")) ? true : false
+        XCTAssertTrue(isSuccess)
 
+    }
+
+    func testShowAverage() {
+        let isSuccess = myCreditManager.addStudent(name: "ABC") == .success(Student(name: "ABC")) ? true : false
+        XCTAssertTrue(isSuccess)
+    }
 }

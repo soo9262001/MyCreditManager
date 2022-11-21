@@ -7,65 +7,61 @@
 
 import Foundation
 
+enum StudentError: Error {
+    case isStudent
+    case noFoundStudent
+}
+
 class MyCreditManager {
-    /// 학생명단 리스트
-    var studentNameList: [String] = []
-    /// 학생 성적 리스트
-    var studentGradeList: [Student] = []
+    /// 학생 리스트
+    var studentList: [Student] = []
  
-    /// 학생명단 추가
-    func addStudent(name: String) {
-        if studentNameList.contains(name) {
-            print("\(name)은 이미 존재하는 학생입니다. 추가하지 않습니다")
-        } else {
-            print("\(name) 학생을 추가했습니다.")
-            studentNameList.append(name)
+    /// 학생 이름 추가
+    func addStudent(name: String) -> Result<Student, StudentError>{
+        if studentList.filter({ $0.name == name}).count > 0 {
+            return .failure(.isStudent)
         }
+        studentList.append(Student(name: name))
+        return .success(Student(name: name))
     }
 
-    /// 학생명단 삭제
-    func deleteStudent(name: String) {
-        if studentNameList.contains(name) {
-            print("\(name) 학생을 삭제하였습니다.")
-            studentNameList.removeAll(where: { $0 == name })
-        } else {
-            print("\(name) 학생을 찾지 못했습니다.")
+    /// 학생 이름 삭제
+    func deleteStudent(name: String) -> Result<Student, StudentError>{
+        if studentList.filter({ $0.name == name }).count > 0 {
+            studentList.removeAll(where: { $0.name == name })
+            return .success(Student(name: name))
         }
+        return .failure(.noFoundStudent)
     }
     
     /// 이름, 과목, 성적 추가
-    func addGrades(name: String, subject: String, grade: String) {
-        let info = Student(name: name, subject: subject, grade: grade.uppercased())
-        studentGradeList.removeAll { $0.name == name && $0.subject == subject }
-        studentGradeList.append(info)
-        print("\(name) 학생의 \(subject) 과목이 \(grade)로 추가(변경)되었습니다.")
+    func addGrades(name: String, subject: String, grade: String) -> Result<Student, StudentError> {
+        if grade != "" {
+            let info = Student(name: name, subject: subject, grade: grade.uppercased())
+            studentList.removeAll { $0.name == name && ($0.subject == subject || $0.subject == nil) }
+            studentList.append(info)
+            return .success(info)
+        }
+        return .failure(.noFoundStudent)
 
     }
     
     /// 이름, 과목, 성적 삭제
-    func deleteGrades(name: String, subject: String) {
-        if studentGradeList.contains(where: { $0.name == name && $0.subject == subject }) {
-            print("\(name) 학생의 \(subject) 과목의 성적이 삭제되었습니다.")
-            studentGradeList.removeAll { $0.name == name && $0.subject == subject }
-        } else {
-            print("\(name) 학생을 찾지 못했습니다.")
+    func deleteGrades(name: String, subject: String) -> Result<Student, StudentError>{
+        if studentList.contains(where: { $0.name == name && $0.subject == subject }) {
+            studentList.removeAll { $0.name == name && $0.subject == subject }
+            return .success(Student(name: name))
         }
+        return .failure(.noFoundStudent)
     }
     
     /// 성적 평균 보기
-    func showAverage(name: String) {
-        if studentGradeList.contains(where: { $0.name == name }) {
-            let data = studentGradeList.filter { $0.name == name }
-            var average: Double = 0
-            for i in data {
-                print("\(i.subject): \(i.doubleGrade)")
-                average += i.doubleGrade
-            }
-            average = round(average / Double(data.count) * 100) / 100
-            print("평점: \(average)")
-        } else {
-            print("\(name) 학생을 찾지 못했습니다.")
+    func showAverage(name: String) -> Result<[Student], StudentError> {
+        if studentList.contains(where: { $0.name == name && $0.subject != nil }) {
+            let data = studentList.filter { $0.name == name }
+            return .success(data)
         }
+        return .failure(.noFoundStudent)
     }
 
     /// 종료

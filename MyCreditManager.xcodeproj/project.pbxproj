@@ -12,6 +12,10 @@
 		EB9A7E652924BBF500B6201F /* MyCreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E642924BBF500B6201F /* MyCreditManager.swift */; };
 		EB9A7E672924BCF000B6201F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E662924BCF000B6201F /* Message.swift */; };
 		EB9A7E6F2925CF7300B6201F /* MyCreditManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E6E2925CF7300B6201F /* MyCreditManagerTests.swift */; };
+		EB9A7E75292763C200B6201F /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E622924B95000B6201F /* Student.swift */; };
+		EB9A7E762927645E00B6201F /* MyCreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E642924BBF500B6201F /* MyCreditManager.swift */; };
+		EB9A7E77292767FB00B6201F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E662924BCF000B6201F /* Message.swift */; };
+		EB9A7E78292767FE00B6201F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9A7E5B2923676300B6201F /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -191,7 +195,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB9A7E762927645E00B6201F /* MyCreditManager.swift in Sources */,
+				EB9A7E78292767FE00B6201F /* main.swift in Sources */,
+				EB9A7E77292767FB00B6201F /* Message.swift in Sources */,
 				EB9A7E6F2925CF7300B6201F /* MyCreditManagerTests.swift in Sources */,
+				EB9A7E75292763C200B6201F /* Student.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

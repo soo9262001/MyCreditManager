@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct Student {
+struct Student: Equatable {
     /// 이름
     var name: String
     /// 과목
-    var subject: String
+    var subject: String?
     /// 등급
-    var grade: String
+    var grade: String?
     /// 등급별 점수
     var doubleGrade: Double {
         switch grade {
@@ -29,9 +29,19 @@ struct Student {
         }
     }
     
+    init(name: String) {
+        self.name = name
+    }
+    
     init(name: String, subject: String, grade: String) {
         self.name = name
         self.subject = subject
         self.grade = grade
+    }
+}
+
+extension Student {
+    static func ==(lhs: Student, rhs: Student) -> Bool {
+        return lhs.name == rhs.name
     }
 }
